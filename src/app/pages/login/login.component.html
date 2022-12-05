@@ -1,0 +1,78 @@
+<div class="parallax blocks" style="background-image: url('../../../assets/photo1.jpeg');"
+     xmlns="http://www.w3.org/1999/html">
+  <div style="padding-top: 100px"></div>
+
+  <mat-card class="mat-elevation-z10">
+    <mat-card-title style="text-align: center">Вхід в сервіс RailwayTicket</mat-card-title>
+    <mat-card-subtitle style="text-align: center; font-size: 0.8em">
+      Перед початком роботи переконайтесь, що у вас є акаунт в Телеграм, або зареєструйтесь.
+    </mat-card-subtitle>
+
+    <mat-card-content style="text-align: center; padding: 24px 0 20px;">
+<!--      <p style="color: red; font-weight: 500; font-size: 1.2em">-->
+<!--        Адміністрація сервісу приносить вибачення, але з технічних причин сервіс тимчасово недоступний!-->
+<!--      </p>-->
+      <div id="telegramLoginWidget"></div>
+      <button *ngIf="devMode" mat-raised-button color="primary" (click)="loginDeveloper()">
+        login developer
+      </button>
+      <br>
+      <div class="description">
+        <span class="mat-hint">* авторизація через офіційний плагін Телеграм</span>
+        <br>
+        <span class="mat-hint">** <b>УВАГА!</b> ми не використовуємо ваші дані акаунтта, а тільки відправляєм вам повідомлення.</span>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<div class="block-work" [ngStyle.lt-sm]="{'height': '50vh'}" [ngStyle.xs]="{'height': '100vh'}" style="height: 50vh"
+     fxLayout="row" [fxLayout.lt-md]="'row wrap'" [fxLayout.xs]="'column'" fxLayoutAlign="space-between center"
+     fxLayoutGap="12px" [fxLayoutGap.lt-md]="'6px'">
+  <ng-container *ngFor="let block of blockWork; let i = index">
+    <cht-work-state [title]="block.title" [icon]="block.icon"></cht-work-state>
+    <cht-line-ok *ngIf="i < blockWork.length - 1" fxHide.xs=""></cht-line-ok>
+  </ng-container>
+</div>
+
+<div class="parallax blocks" style="background-image: url('../../../assets/photo2.jpg'); height: 60vh;">
+  <div class="video-block">
+    <embed class="video" width="560" height="315" src="https://www.youtube.com/embed/y3S5X8fEFHM?rel=0&amp;showinfo=0"
+           frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </div>
+</div>
+
+<div class="blocks" style="height: 60vh" [ngStyle.lt-md]="{'height': '60vh'}"
+     fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="12px">
+  <h3>Для уточнення пошуку виберіть клас вагона і тип місця</h3>
+  <div class="section-train" [ngStyle.lt-md]="{ 'flex-flow': 'row wrap', 'justify-content': 'center', 'margin': '0 auto 20px' }">
+    <div class="image-item" *ngFor="let image of images" [ngStyle.lt-md]="{'margin': '0 4px 0 0'}">
+      <img [src]="'../../../assets/' + image.image" [alt]="image.title" [ngStyle.lt-md]="{'width': '28vw'}">
+      <span>{{image.title}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="parallax" style="background-image: url('../../../assets/photo1.jpeg');"
+     [ngStyle.lt-sm]="{'height': '60vh'}" [ngStyle.gt-xs]="{'height': '40vh'}">
+  <div class="info-block">
+    <h3>Про проект</h3>
+    <p class="description-info"><strong>«Railway Ticket»</strong> – це український проект для пошуку квитків на поїзд.<br>
+      <mat-icon>info</mat-icon>Мета проекту – безкоштовно надати можливість знайти квиток на всі напрямки по Україні.<br>
+      <mat-icon>train</mat-icon>Пошук залізничних квитків здійснюється для Української Залізниці.<br>
+      <mat-icon>search</mat-icon>Щоб знайти потрібний квиток потрібно, створити моніторинг квитка на будь-який напрямок.
+      Для уточнення моніторингу, варто встановити фільтри:
+      типу місця у вагоні поїзда, типу вагона, час і дату відправки. Уточнений моніториг прискорює пошук потрібного
+      вам квитка.<br>
+      <mat-icon>near_me</mat-icon>Для зручності спілкування із користувачами і повідомлення про вільний квиток,
+      сервіс Railway Ticket використовує месенджер Telegram.
+    </p>
+  </div>
+</div>
+<cht-footer-copyright-block>
+  <a class="help-btn" routerLink="/help" routerLinkActive>
+    <mat-icon>help_outline</mat-icon>
+    Допомога
+  </a>
+</cht-footer-copyright-block>

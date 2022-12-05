@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+
+// Define a theme.
+$primary: mat-palette($mat-cyan, 800, 400, A700);
+//$accent:  mat-palette($mat-orange, 400, 200, 600);
+$accent:  mat-palette($mat-cyan, 500, 200, 900);
+//$accent:  mat-palette($mat-purple, 600, 200, 900);
+//$accent:  mat-palette($mat-green, 400, 300, 500);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+$secondary-color: mat-color(map-get($theme, foreground), secondary-text);
+
+$config: mat-typography-config();
+
+@mixin container-one-row {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+}

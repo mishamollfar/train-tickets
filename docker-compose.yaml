@@ -1,0 +1,32 @@
+version: "2"
+services:
+  front:
+    restart: always
+    image: registry.gitlab.kiki.kiev.ua/train/check-ticket-frontend:latest
+    ports:
+    - "127.0.0.1:4201:80"
+    labels:
+    - com.centurylinklabs.watchtower.enable=true
+  api:
+    restart: always
+    image: registry.gitlab.kiki.kiev.ua/train/check-ticket-backend:latest
+    environment:
+      PORT: "3000"
+      MONGO_URI: "mongodb://mongo/check-train-ticket"
+    ports:
+    - "127.0.0.1:4202:3000"
+    labels:
+    - com.centurylinklabs.watchtower.enable=true
+  mongo:
+    restart: always
+    image: mongo:3
+    volumes:
+    - ./mongo_data:/data/db
+  watchtower:
+    container_name: 'watchtower'
+    image: v2tec/watchtower
+    command: --cleanup --label-enable --interval 30
+    restart: always
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /root/.docker/config.json:/config.json:ro

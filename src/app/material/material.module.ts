@@ -1,0 +1,86 @@
+import { OverlayModule } from '@angular/cdk/overlay';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatOptionModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatToolbarModule,
+} from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { CustomDataAdapterService } from './custom-data-adapter.service';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
+    OverlayModule,
+    MatDialogModule,
+    FlexLayoutModule,
+    RouterModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+  ],
+  declarations: [],
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
+    OverlayModule,
+    MatDialogModule,
+    FlexLayoutModule,
+    RouterModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatDividerModule,
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: CustomDataAdapterService },
+    { provide: MAT_DATE_LOCALE, useValue: 'uk-UA' },
+  ],
+})
+export class MaterialModule {}

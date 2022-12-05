@@ -1,0 +1,109 @@
+<cht-top-toolbar></cht-top-toolbar>
+
+<div class="content" [ngStyle.xs]="{'max-width': '100vw'}" [ngStyle.gt-xs]="{'max-width': '70vw'}">
+  <cht-name-page></cht-name-page>
+
+  <div [formGroup]="searchParameter" fxLayout="column" fxLayoutGap="20px" style="margin-top: 20px" [ngStyle.xs]="{'padding': '0 24px'}">
+    <div fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign.gt-xs="center center" fxLayoutAlignxs="center stretch" fxLayoutGap="20px">
+      <div fxFlex="1 1 auto" fxLayout="column">
+         <mat-form-field fxFlex="1 1 auto" appearance="outline">
+          <input type="text" placeholder="Місто звідки" aria-label="Number" formControlName="from" matInput [matAutocomplete]="autoFrom">
+          <mat-autocomplete #autoFrom="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCityFrom | async" [value]="city.name">
+              {{city.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+          <span class="link-undeline link subheader subtitle" *ngFor="let item of fastSelect" 
+                (click)="fastSelectCity('from', item)">{{item.name}}
+          </span>
+        </div>
+      </div>
+
+      <button [ngStyle.xs]="{'height': '46px'}" mat-raised-button (click)="reverseCity()">
+        <mat-icon color="primary" fxHide.xs="">swap_horiz</mat-icon>
+        <mat-icon color="primary" fxHide.gt-xs="">swap_vert</mat-icon>
+      </button>
+
+      <div fxFlex="1 1 auto" fxLayout="column">
+        <mat-form-field fxFlex="1 1 auto" appearance="outline">
+          <input type="text" placeholder="Місто куди" aria-label="Number" formControlName="to" matInput [matAutocomplete]="autoTo">
+          <mat-autocomplete #autoTo="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCityTo | async" [value]="city.name">
+              {{city.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="6px" fxLayoutAlign="center center">
+          <span class="link-undeline link subheader subtitle" *ngFor="let item of fastSelect" 
+                (click)="fastSelectCity('to', item)">{{item.name}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="20px">
+      <h3 class="subtitle">Дата і час відправлення поїзда та кількість місць</h3>
+      <mat-error *ngIf="searchParameter.get('dateTrainGo').invalid">{{getErrorMessage()}}</mat-error>
+      <div fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="dateTrain" [min]="minDate" placeholder="Дата відправлення" [formControl]="searchParameter.get('dateTrainGo')">
+          <mat-datepicker-toggle matSuffix [for]="dateTrain"></mat-datepicker-toggle>
+          <mat-datepicker #dateTrain></mat-datepicker>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="6px">
+          <span class="subtitle">час від</span>
+          <cht-time-picker formControlName="timeFrom"></cht-time-picker>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="6px">
+          <span class="subtitle">час до</span>
+          <cht-time-picker formControlName="timeTo"></cht-time-picker>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="6px">
+          <span class="subtitle">к-сть місць</span>
+          <mat-form-field appearance="outline" style="width: 70px">
+            <input type="number" matInput placeholder="Кількість місць" formControlName="placeCount">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout.gt-xs="row" fxLayout.xs="column" fxLayoutAlign="space-around" fxLayoutGap="20px">
+      <div formGroupName="trainCarriage" fxLayout="column">
+        <h3 class="subtitle">Тип вагона</h3>
+        <mat-checkbox formControlName="lux">Люкс</mat-checkbox>
+        <mat-checkbox formControlName="compartment">Купе</mat-checkbox>
+        <mat-checkbox formControlName="berth">Плацкарт</mat-checkbox>
+        <mat-checkbox formControlName="seatingFirstClass">Сидячий першого класу</mat-checkbox>
+        <mat-checkbox formControlName="seatingSecondClass">Сидячий другого класу</mat-checkbox>
+      </div>
+
+      <div formGroupName="placeInCarriage" fxLayout="column">
+        <h3 class="subtitle">Тип місця</h3>
+        <mat-checkbox formControlName="notShowTopPlace">Не показувати верхні</mat-checkbox>
+        <mat-checkbox formControlName="notShowBottomPlace">Не показувати нижні</mat-checkbox>
+        <mat-checkbox formControlName="notShowLateralPlace">Не показувати бокові</mat-checkbox>
+        <mat-checkbox formControlName="notShowNeatToiletPlace">Не показувати біля туалету</mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px"
+       style="margin-top: 20px" [ngStyle.xs]="{'padding-bottom': '24px'}">
+    <button mat-raised-button color="primary" [disabled]="searchParameter.invalid"
+            (click)="sendCheckTiket()">
+      <mat-icon *ngIf="!createPage">edit</mat-icon>
+      <span>{{createPage ? 'Створити' : 'Зберегти зміни'}}</span>
+    </button>
+
+    <button mat-button color="primary"
+            (click)="rout.goToHomePage()">
+      <span>Скасувати</span>
+    </button>
+  </div>
+
+</div>

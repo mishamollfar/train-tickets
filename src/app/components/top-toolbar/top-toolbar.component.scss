@@ -1,0 +1,16 @@
+mat-toolbar {
+  background: #00838f;
+  background-image: linear-gradient(to top left, #3db8e9, #42cadc, #00838f);
+  color: white;
+  height: 100px;
+  mat-icon {
+    border: 2px solid;
+    border-radius: 12px;
+    font-size: 36px;
+    margin-right: 12px;
+    height: 36px;
+    width: 36px;
+    color: #fff;
+    vertical-align: middle;
+  }
+}

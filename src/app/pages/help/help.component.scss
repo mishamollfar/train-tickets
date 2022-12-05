@@ -1,0 +1,91 @@
+.page-content {
+  padding: 24px;
+  .section-what {
+    text-align: center;
+    padding: 24px;
+    margin: -24px -24px 0;
+    background-color: #e9f5f9;
+    height: 20vh;
+
+    @media screen and (max-width: 600px) {
+      height: 40vh;
+    }
+    h1 {
+      font-size: 32px;
+      line-height: 40px;
+      @media screen and (max-width: 400px) {
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+    p {
+      margin: 4px auto 12px;
+    };
+  }
+  .section {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    mat-icon {
+      vertical-align: middle;
+    }
+    .bug-list {
+      padding-left: 8px;
+    }
+    .image-media-flex {
+      @media screen and (max-width: 600px) {
+        width: 400px;
+      }
+      @media screen and (max-width: 420px) {
+        width: 380px;
+      }
+      @media screen and (max-width: 380px) {
+        width: 300px;
+      }
+    }
+  }
+  .section-all-width {
+    background-color: #e9f5f9;
+    margin: -24px -24px 0;
+  }
+}
+
+.header-no-width {
+  font-weight: 400;
+}
+
+.header-small-margin {
+  margin-bottom: 12px;
+}
+
+.p-no-margin {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.p-line-h28 {
+  line-height: 28px;
+  @media screen and (max-width: 600px) {
+    line-height: 24px;
+  }
+}
+
+.p-small-w {
+  max-width: 700px;
+}
+
+.p-align-justify {
+  text-align: justify;
+}
+
+.image-border {
+  box-shadow: 0 0 6px 2px #979797;
+  border-radius: 8px;
+}
+
+.icon-section-header {
+  color: #7c68d4;
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+}

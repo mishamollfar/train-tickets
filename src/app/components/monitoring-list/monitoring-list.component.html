@@ -1,0 +1,18 @@
+<div *ngIf="(list$ | async).list as list" fxLayout="row wrap" fxLayoutAlign="space-between stretch"
+     [ngStyle.sm]="margin" [ngStyle.md]="margin">
+
+  <cht-monitoring-item fxFlex.gt-xs="1 1 48%" fxFlex.xs="1 1 100%"
+                       [ngStyle.xs]="{'margin': '12px'}" [ngStyle.gt-xs]="{'margin': '12px 0 12px 12px'}"
+                       *ngFor="let item of list" [item]="item"></cht-monitoring-item>
+
+  <div class="empty-list mat-elevation-z2" *ngIf="!list.length" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon fxHide.xs="" class="empty-icon">label_off</mat-icon>
+    <div class="attention-message">
+      <span>
+        Для того, щоб знайти квиток, спочатку потрібно створити моніториг, який буде перевіряти наявність квитка.
+      Якщо ви шукаєте квиток в певному класі чи типі вагона, то варто скористатися різними фільтрами, при створені моніторингу.
+      </span><br><br>
+      <span>На даний час у вас немає жодного створеного моніторингу квитків.</span>
+    </div>
+  </div>
+</div>

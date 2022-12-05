@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+}
+
+.time-body {
+  padding: 0;
+  text-align: center;
+  max-width: 280px;
+
+  .go-back-btn {
+    width: 94%;
+    margin: 10px 0;
+  }
+
+  .hours, .minutes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 5px;
+    .item {
+      margin: 2px;
+      padding: 0;
+      min-width: 22%;
+      font-weight: 300;
+      line-height: 30px;
+      .mark {
+        background: #eeeeee;
+        padding: 2px 4px;
+        border-radius: 2px;
+      }
+    }
+    .date-now {
+      background-color: #c8ecca;
+    }
+    .checked {
+      background-color: #b8dbf7;
+    }
+  }
+}
+

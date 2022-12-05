@@ -1,0 +1,35 @@
+<div>
+  <button cdk-overlay-origin #trigger="cdkOverlayOrigin" mat-stroked-button
+          (click)="toggleSelectColumnMenu()">
+    {{timeValue}}
+  </button>
+
+  <ng-template cdk-connected-overlay [cdkConnectedOverlayOffsetX]="0"
+               cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+               [cdkConnectedOverlayPositions]="_positions"
+               [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayWidth]="260" cdkConnectedOverlayHasBackdrop
+               [cdkConnectedOverlayOpen]="show"
+               (backdropClick)="toggleSelectColumnMenu()">
+    <mat-card class="time-body">
+      <mat-card-content>
+        <button *ngIf="showMinutes && !showHours" class="go-back-btn" mat-button (click)="goToHours()">
+          {{selectedHour <= 5 ? '0' + selectedHour : selectedHour}}:{{selectedMinute <= 5 ? '0' + selectedMinute : selectedMinute}}
+        </button>
+
+        <div class="hours mat-calendar" *ngIf="showHours">
+          <button mat-button class="item" *ngFor="let hour of hours" [class.checked]="hour === selectedHour"
+                  (click)="selectHour(hour)">
+            <span class="mark">{{hour <= 9 ? '0' + hour : hour}}</span><span>:00</span>
+          </button>
+        </div>
+        <div class="minutes mat-calendar" *ngIf="showMinutes && !showHours">
+          <button mat-button class="item" *ngFor="let minute of minutes" [class.checked]="minute === selectedMinute"
+                  (click)="selectMinute(minute)">
+            <span>{{selectedHour <=9 ? '0' + selectedHour : selectedHour}}:</span>
+            <span class="mark">{{minute <= 5 ? '0' + minute : minute}}</span>
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>

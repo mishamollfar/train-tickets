@@ -1,0 +1,20 @@
+:host {
+  min-height: 100%;
+  mat-card {
+    //height: calc(100% - 48px);
+    height: 100%;
+    border-radius: 24px;
+    mat-card-actions {
+      height: 50px;
+      padding: 0 0;
+    }
+  }
+}
+
+.icon-margin-right {
+  margin-right: 4px;
+}
+
+.clear-padding {
+  padding: 0 8px;
+}

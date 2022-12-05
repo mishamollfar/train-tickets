@@ -1,0 +1,22 @@
+<div *ngIf="isAuth$ | async" style="height: 100%">
+
+  <mat-menu #userTopMenu="matMenu"
+            [overlapTrigger]="false" xPosition="before"
+            class="user-top-menu">
+    <a mat-menu-item routerLink="/"> <mat-icon mat-list-icon>rss_feed</mat-icon> Моніторинги </a>
+    <a mat-menu-item routerLink="/new-check"> <mat-icon mat-list-icon>android</mat-icon> Новий моніторинг </a>
+    <mat-divider></mat-divider>
+    <a mat-menu-item routerLink="/help"> <mat-icon mat-list-icon>help</mat-icon> Допомога </a>
+    <button mat-menu-item (click)="signOut()"> <mat-icon>exit_to_app</mat-icon> Вийти</button>
+  </mat-menu>
+
+  <button mat-button #trigger="matMenuTrigger"
+          [matMenuTriggerFor]="userTopMenu"
+          style="height: 100%;"
+          [class.menuOpen]="trigger.menuOpen">
+    <ng-container *ngIf="user$ | async as user">
+      <img class="circle-img" [src]="user?.photoUrl" width="40" height="40" alt="user photo">
+      <span fxHide.xs="">{{user?.firstName}} {{user?.lastName}}</span>
+    </ng-container>
+  </button>
+</div>

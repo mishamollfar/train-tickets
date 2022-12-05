@@ -1,0 +1,42 @@
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: default;
+}
+
+mat-form-field {
+  ::ng-deep div.mat-form-field-wrapper {
+    padding: 0;
+  }
+  ::ng-deep div.mat-form-field-infix {
+    border-top: 4px solid transparent;
+  }
+  ::ng-deep div.mat-form-field-outline-start {
+    width: 24px !important;
+    border-radius: 24px 0 0 24px;
+  }
+  ::ng-deep div.mat-form-field-outline-end {
+    border-radius: 0 24px 24px 0;
+  }
+}
+
+::ng-deep button.mat-stroked-button {
+  border: 1px solid #dae0e1;
+  line-height: 46px;
+  font-size: 1em;
+  font-weight: 400;
+  &:hover {
+    border: 2px solid #000000;
+    line-height: 42px;
+  }
+  .mat-button-focus-overlay {
+    background: none;
+  }
+}
+
+.link-undeline {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none
+  }
+}

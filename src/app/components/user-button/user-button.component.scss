@@ -1,0 +1,13 @@
+:host {
+  height: 44%;
+  display: flex;
+}
+
+.user-top-menu {
+  width: 400px;
+}
+.top-menu {
+  .menuOpen {
+    background-color: rgba(0,0,0,.12);
+  }
+}

@@ -1,0 +1,19 @@
+.empty-list {
+  text-align: center;
+  padding: 24px 16px;
+  width: 100%;
+  margin: 24px 8px 0;
+  background: #ffffff;
+  border-radius: 24px;;
+  .empty-icon {
+    font-size: 5em;
+    width: 80px;
+    height: 80px;
+    margin-right: 12px;
+  }
+}
+
+.attention-message {
+  text-align: justify;
+  font-size: 1.2em;
+}

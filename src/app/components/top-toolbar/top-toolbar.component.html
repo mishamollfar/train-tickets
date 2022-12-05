@@ -1,0 +1,8 @@
+<mat-toolbar class="mat-elevation-z2 top-menu">
+  <a routerLink="/" routerLinkActive>
+    <mat-icon class="link">train</mat-icon>
+  </a>
+  <span [ngClass.gt-xs]="'mat-display-1'" style="margin: auto;">Пошук залізничних квитків</span>
+  <span style="flex: 1 1 auto;"></span>
+  <cht-user-button *ngIf="showUserBtn"></cht-user-button>
+</mat-toolbar>

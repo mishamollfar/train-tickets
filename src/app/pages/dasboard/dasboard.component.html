@@ -1,0 +1,13 @@
+<cht-top-toolbar></cht-top-toolbar>
+
+<div class="content" [ngStyle.lt-lg]="{'max-width': '100vw'}" [ngStyle.gt-md]="{'max-width': '70vw'}">
+  <cht-name-page>
+    <button fxHide.xs="" mat-raised-button color="primary" routerLink="new-check" routerLinkActive="active">новий моніторинг</button>
+    <button fxHide.gt-xs="" mat-mini-fab color="primary" routerLink="new-check" routerLinkActive="active">
+      <mat-icon>add</mat-icon>
+    </button>
+  </cht-name-page>
+
+  <cht-monitoring-list></cht-monitoring-list>
+</div>
+

@@ -1,0 +1,160 @@
+<cht-top-toolbar [showUserBtn]="false"></cht-top-toolbar>
+
+<div class="page-content">
+  <section class="section-what">
+    <h1 class="header-no-width">Як користуватися сервісом RailwayTicket</h1>
+    <p class="p-line-h28 p-small-w">
+      За допомогою сервісу RailwayTicket можна знаходити залізничні квитоки на всі напрямки по Україні і
+      отримувати сповіщення про наявність вільного квитка в месенджер Telegram.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="header-no-width">
+      <mat-icon class="icon-section-header">exit_to_app</mat-icon>
+      Початок роботи. Вхід
+    </h2>
+    <div>
+      <p class="p-line-h28">
+        Перш ніж почати створювати моніторинги і шукати квитки, потрібно увійти в сервіс, для цього натиснути на кнопку
+        "вхід через Telegram", успішно виконавши дію, вам відкриється вікно "вибір аккаунта" в якому потрібно ввести номер телефону,
+        до якого прикріплений ваш акаунт, для підтвердження вибору натисніть кнопку "Next".
+      </p>
+      <div fxLayout="row" fxLayoutAlign="space-around center" [fxLayout.lt-md]="'column'" [fxLayoutGap.lt-md]="'24px'">
+        <img class="image-border image-media-flex" src="../../../assets/login1.png" alt="sign in">
+        <img class="image-border image-media-flex" src="../../../assets/login2.png" alt="change account">
+      </div>
+      <p class="p-line-h28">
+        У ваш чат в Telegram прийшло
+        підтвердженн, яке потрібно схвалити, натиснувши кнопку "Confirm" і виконуєте останній крок входу, тисните на кнопку
+        "Accept" у вікні "вибір аккаунта".
+      </p>
+      <div fxLayout="row" fxLayoutAlign="space-around center" [fxLayout.lt-md]="'column'" [fxLayoutGap.lt-md]="'24px'">
+        <img class="image-border image-media-flex" src="../../../assets/login3.png" alt="telegram confirm">
+        <img class="image-border image-media-flex" src="../../../assets/login4.png" alt="accept login">
+      </div>
+      <p class="p-line-h28">
+        Виконавши усю постідовність простих дій вам відкриється список ваших моніторингів.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-all-width">
+    <div class="section">
+      <h2 class="header-no-width">
+        <mat-icon class="icon-section-header">power_input</mat-icon>
+        Верхня панель
+      </h2>
+      <p class="p-line-h28">
+        У верхній частині вікна розміщена інформаційно-керуюча панель.
+      </p>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+          <img class="image-border" src="../../../assets/home-btn.png" alt="home button">
+          <p class="p-line-h28 p-small-w">
+            Зліва на панелі знаходиться кнопка "home", яка напрваляє вас на головну сторінку (список моніторингів),
+            причому ця кнопка однаково працює на усіх сторінках.
+          </p>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="24px" [fxLayout.xs]="'column'">
+          <p class="p-line-h28 p-small-w">
+            Зправа на панелі знаходиться кнопка "user menu", клікнувши по які вам відкриється меню користувача.
+            У меню доступно 4 функції: список моніторингів, створення нового моніторингу, допомога і вихід із сервісу.
+          </p>
+          <img class="image-border" src="../../../assets/user-menu.png" alt="user menu">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px" [fxLayout.lt-md]="'column'">
+    <h2 class="header-no-width header-small-margin" fxHide.gt-sm="">
+      <mat-icon class="icon-section-header">home</mat-icon>
+      Home сторінка
+    </h2>
+    <img class="image-border image-media-flex" src="../../../assets/empty-list.png" alt="empty monitoring list">
+    <div fxLayout="column">
+      <h2 class="header-no-width header-small-margin" fxHide.lt-md="">
+        <mat-icon class="icon-section-header">home</mat-icon>
+        Home сторінка
+      </h2>
+      <p class="p-line-h28 p-align-justify p-no-margin">
+        Успішно пройшовши аутентифікацію вам відкриється сторінка списку усіх моніторингів.<br>
+        Дана сторінка - головна(домашня). За допомогою меню звідси можна попасти на інші сторінки сервісу,
+        такі як: вхід, новий моніторинг, редагування моніторингу і допомога.<br>
+        Якщо ви користуєтеся сервісом перший раз або ви видалили усі свої моніторинги то у вас відображається повідомлення,
+        створіть моніторинг. Щоб створити новий моніторинг, натисність кнопку "новий моніторинг" або виберіть аналогічний
+        пункт із меню користувача, що на панелі у правому верхньому куті монітору, після чого ви перейдети на сторінку створення.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-all-width">
+    <div class="section" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px" [fxLayout.lt-md]="'column'">
+      <h2 class="header-no-width header-small-margin" fxHide.gt-sm="">
+        <mat-icon class="icon-section-header">library_add</mat-icon>
+        Новий моніториг
+      </h2>
+      <div fxLayout="column">
+        <h2 class="header-no-width header-small-margin" fxHide.lt-md="">
+          <mat-icon class="icon-section-header">library_add</mat-icon>
+          Новий моніториг
+        </h2>
+        <p class="p-line-h28 p-align-justify">
+          Перш за все, щоб створити новий моніторинг потрібно заповнити поля: місто звідки, місто куди і дата відправлення поїзда.<br>
+          Вказавши основну інформацію, внизу сторінки ставне активною кнопка "створити", натиснувши яку сервіс створить
+          активний моніторинг залізничного квитку.<br>
+          В більшості випадків виконання перелічених вище дій достатньо для пошуку потрібного квитка, проте, якщо вам цього не достатньо
+          або ви надаєте перевагу певному класу вагона чи типу місця, тоді для вас доступні цілий ряд фільтрів.
+          Застосування фільтрів зводиться до встановлення прапорців, навпроти відповідних назв класів вагонів і типів місць.
+        </p>
+      </div>
+      <img class="image-border image-media-flex" src="../../../assets/new-monitoring.png" alt="new monitoring page">
+    </div>
+  </section>
+
+  <section class="section" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+    <img class="image-border" src="../../../assets/monitoring-item.png" alt="monitoring item" fxHide.lt-md="">
+    <div fxLayout="column" [fxLayoutAlign.lt-md]="'center center'">
+      <h2 class="header-no-width header-small-margin">
+        <mat-icon class="icon-section-header">departure_board</mat-icon>
+        Створений моніторинг
+      </h2>
+      <p class="p-line-h28 p-align-justify">
+        Створивши моніторинг, буде відображений у вас на головній сторінці.<br>
+        Моніторинг містить всі важливі дані, зокрема: міста звіди і куди ви шукаєте квиток, дата відправлення, кількість квитків,
+        задані вами класи вагонів і типи місць(квитки тільки з такими вагонами і місцями буде шукати сервіс).<br>
+      </p>
+      <img class="image-border image-media-flex" src="../../../assets/monitoring-item.png" alt="monitoring item" fxHide.gt-sm="">
+      <p class="p-line-h28 p-align-justify">
+        Для зручності керування моніторингом вам доступно 3 основні кнопки: <br>
+        - редагувати, при натиску на яку відкриється вікно редагування в якому можлива зміна усіх параметрів пошуку квитка,
+        на вигляд сторінка така ж як і сторінка "стовення"; <br>
+         - показник активності, показує чи активний моніторинг в даний час, а також дозволяє перевести моніторинг у
+        неактивний стан, при кліку;<br>
+         - видалити, кнопка видалення моніторингу із списку вашого списку і припинити пошук квитків.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-all-width" style="margin: 0 -24px -24px">
+    <div class="section">
+      <h2 class="header-no-width">
+        <mat-icon class="icon-section-header">bug_report</mat-icon>
+        Поширені проблеми
+      </h2>
+      <div class="bug-list">
+        <p class="p-line-h28">
+          <mat-icon class="deactive">report_problem</mat-icon>
+          Якщо у вас відстній профіль у Telegram, то ви не зможите користуватися цим сервісом.
+        </p>
+        <p class="p-line-h28">
+          <mat-icon class="deactive">report_problem</mat-icon>
+          Якщо у вашому аккаунті в Telegram НЕ заповнені ваші дані, то ви не зможите ввійти у сервіс.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<cht-footer-copyright-block></cht-footer-copyright-block>

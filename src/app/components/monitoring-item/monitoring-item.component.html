@@ -1,0 +1,92 @@
+<mat-card *ngIf="item" fxLayout="column">
+  <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-icon color="primary" style="margin-right: 12px">location_city</mat-icon>
+      <span>{{item.from.name}} - {{item.to.name}}</span>
+    </div>
+    <mat-icon [class.active]="item.active" [class.deactive]="!item.active">{{item.active ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-card-title>
+
+  <mat-card-content fxFlex="1 1 auto" fxLayout="column" fxLayoutGap="24px">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-icon class="icon-margin-right" color="primary">date_range</mat-icon>
+        <span>{{item.dateTrainGo | date: 'yyyy-MM-dd'}}</span>
+      </div>
+      <span>|</span>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-icon class="icon-margin-right" color="accent">timelapse</mat-icon>
+        <span>{{item.timeFrom}} - {{item.timeTo}}</span>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <span>Кількість квитків: {{item.placeCount | number}}</span>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="12px">
+      <span>Тип вагона:</span>
+      <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="24px">
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="item.trainCarriage.lux">
+          <mat-icon class="icon-margin-right">hot_tub</mat-icon>
+          <span>Люкс</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="item.trainCarriage.compartment">
+          <mat-icon class="icon-margin-right">airline_seat_individual_suite</mat-icon>
+          <span>Купе</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="item.trainCarriage.berth">
+          <mat-icon class="icon-margin-right">airline_seat_flat_angled</mat-icon>
+          <span>Плацкарт</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="item.trainCarriage.seatingFirstClass">
+          <mat-icon class="icon-margin-right">airline_seat_recline_extra</mat-icon>
+          <span>Сидячий 1-го класу</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="item.trainCarriage.seatingSecondClass">
+          <mat-icon class="icon-margin-right">airline_seat_recline_normal</mat-icon>
+          <span>Сидячий 2-го класу</span>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="12px">
+      <span>Тип місця:</span>
+      <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="24px">
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!item.placeInCarriage.notShowTopPlace">
+          <mat-icon class="icon-margin-right">border_top</mat-icon>
+          <span>Верхні</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!item.placeInCarriage.notShowBottomPlace">
+          <mat-icon class="icon-margin-right">border_bottom</mat-icon>
+          <span>Нижні</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!item.placeInCarriage.notShowLateralPlace">
+          <mat-icon class="icon-margin-right">border_right</mat-icon>
+          <span>Бокові</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!item.placeInCarriage.notShowNeatToiletPlace">
+          <mat-icon class="icon-margin-right">accessible_forward</mat-icon>
+          <span>Біля туалету</span>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions fxLayout="row" fxLayoutGap="12px" fxLayoutAlign="center center">
+    <button mat-button class="clear-padding" color="primary" [routerLink]="item._id + '/edit-check'">
+      <mat-icon [ngClass.gt-xs]="'icon-margin-right'">edit</mat-icon>
+      <span fxHide.lt-md="">Редагувати</span>
+    </button>
+    <button mat-button class="clear-padding" (click)="deactiv()">
+      <mat-icon class="icon-margin-right" [class.active]="item.active" [class.deactive]="!item.active">{{item.active ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <span [class.active]="item.active" [class.deactive]="!item.active">{{item.active ? 'Працює' : 'Не працює'}}</span>
+    </button>
+    <button mat-button class="clear-padding" color="warn" (click)="removeCheck()">
+      <mat-icon [ngClass.gt-xs]="'icon-margin-right'">delete</mat-icon>
+      <span fxHide.lt-md="">Видалити</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

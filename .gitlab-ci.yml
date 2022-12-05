@@ -1,0 +1,39 @@
+image: node:8
+
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF"
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - release
+
+build:
+  stage: build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+  script:
+    - node -v
+    - npm -v
+    - npm install
+    - npm run build:ssr --silent
+    - ls -l dist
+
+release:
+  stage: release
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - env
+    - docker version
+    - docker info
+    - docker build -t "$CI_REGISTRY_IMAGE:latest" .
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
